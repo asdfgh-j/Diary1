@@ -77,4 +77,22 @@ public class DBHelper extends SQLiteOpenHelper {
         values.put("password", password);
         return db.insert("users", null, values);
     }
+    /**
+     * 检查用户名和密码是否匹配
+     * @param username 用户名
+     * @param password 密码
+     * @return 如果找到匹配的用户返回 true，否则返回 false
+     */
+    public boolean loginUser(String username, String password) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String[] columns = { COLUMN_ID };
+        String selection = COLUMN_USERNAME + "=? AND " + COLUMN_PASSWORD + "=?";
+        String[] selectionArgs = { username, password };
+        Cursor cursor = db.query(TABLE_USERS, columns, selection, selectionArgs, null, null, null);
+        boolean exists = cursor.getCount() > 0;
+        cursor.close();
+        return exists;
+    }
+
+
 }

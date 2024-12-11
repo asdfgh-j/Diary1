@@ -3,7 +3,8 @@ package com.pikachu.record.sql;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-
+import android.database.Cursor;
+import android.content.ContentValues;
 /**
  * 数据库帮助类，用于管理数据库的创建和版本管理。
  */
@@ -57,5 +58,23 @@ public class DBHelper extends SQLiteOpenHelper {
             db.execSQL("DROP TABLE IF EXISTS " + TABLE_USERS);
             onCreate(db);
         }
+    }
+    public boolean checkUsernameExists(String username) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String[] columns = { "id" };
+        String selection = "username = ?";
+        String[] selectionArgs = { username };
+        Cursor cursor = db.query("users", columns, selection, selectionArgs, null, null, null);
+        boolean exists = cursor.getCount() > 0;
+        cursor.close();
+        return exists;
+    }
+
+    public long insertUser(String username, String password) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("username", username);
+        values.put("password", password);
+        return db.insert("users", null, values);
     }
 }

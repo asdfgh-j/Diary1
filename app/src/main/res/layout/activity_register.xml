@@ -10,26 +10,29 @@
         android:id="@+id/etUsername"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="姓名" />
+        android:minHeight="48dp"
+        android:hint="Username" />
 
     <EditText
         android:id="@+id/etPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="密码"
+        android:minHeight="48dp"
+        android:hint="Password"
         android:inputType="textPassword" />
 
     <EditText
         android:id="@+id/etConfirmPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="确认密码"
+        android:minHeight="48dp"
+        android:hint="Confirm Password"
         android:inputType="textPassword" />
 
     <Button
         android:id="@+id/btnRegister"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="注册" />
+        android:text="Register" />
 
 </LinearLayout>

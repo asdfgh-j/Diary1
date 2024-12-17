@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.os.Handler;
 
 import androidx.appcompat.app.AppCompatActivity;
+import com.pikachu.record.activity.login.LoginActivity; // 确保导入 LoginActivity
 
 import com.pikachu.record.activity.home.HomeActivity;
 import com.pikachu.record.sql.data.InitialSql;
@@ -45,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable(){
 				@Override
 				public void run() {
-					Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+					Intent intent = new Intent(MainActivity.this, LoginActivity.class);
 					startActivity(intent);
 					finish();
 				}

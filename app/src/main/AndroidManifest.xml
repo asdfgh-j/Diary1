@@ -26,7 +26,7 @@
         <activity android:name=".activity.diary.DiaryActivity" />
         <activity android:name=".activity.account.AccountActivity" />
         <activity android:name=".activity.task.TaskActivity" />
-            
+        <activity android:name=".activity.login.LoginActivity" />
             
         
         <activity android:name=".MainActivity">

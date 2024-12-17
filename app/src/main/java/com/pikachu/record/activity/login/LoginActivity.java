@@ -11,6 +11,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.pikachu.record.R;
 import com.pikachu.record.sql.DBHelper;
 
+import com.pikachu.record.activity.home.HomeActivity; // 确保导入 HomeActivity
+import android.content.Intent; // 导入Intent类
+
 public class LoginActivity extends AppCompatActivity {
 
     private EditText etUsername, etPassword;
@@ -50,9 +53,10 @@ public class LoginActivity extends AppCompatActivity {
 
         if (dbHelper.loginUser(username, password)) {
             Toast.makeText(this, "Login successful", Toast.LENGTH_SHORT).show();
-            // 登录成功后跳转到主界面或其他页面
-            // startActivity(new Intent(LoginActivity.this, MainActivity.class));
-            // finish();
+            // 登录成功后跳转到 HomeActivity
+            Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+            startActivity(intent);
+            finish(); // 结束当前的 LoginActivity
         } else {
             Toast.makeText(this, "Invalid username or password", Toast.LENGTH_SHORT).show();
         }
